@@ -1,3 +1,5 @@
+from zbrane import *
+
 import random
 import pygame # klíčová knihovna umožňující vytvářet jednoduše nejen hry
 pygame.init() # nutný příkaz hned na začátku pro správnou inicializaci knihovny
@@ -9,6 +11,8 @@ framerate = 60
 score = 0
 enemy_cooldown = 0
 
+MOVEMENT_SPEED = 5
+
 class Player(pygame.sprite.Sprite):
     def __init__(self): # konstruktor - volá se vždy při vytvoření (inicializaci)
         super().__init__() # volá konstruktor třídy Sprite pro správnou inicializaci
@@ -19,8 +23,14 @@ class Player(pygame.sprite.Sprite):
 
     def player_input(self): 
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_SPACE] and self.rect.bottom >= 300: # výskok po zmáčknutí mezerníku
+        if keys[pygame.K_w] and self.rect.bottom >= 300: # výskok po zmáčknutí mezerníku
             self.gravity = -20
+        
+        if keys[pygame.K_a]:
+            self.rect.x -= MOVEMENT_SPEED
+        
+        if keys[pygame.K_d]:
+            self.rect.x += MOVEMENT_SPEED
 
     def apply_gravity(self):
         self.gravity +=1
