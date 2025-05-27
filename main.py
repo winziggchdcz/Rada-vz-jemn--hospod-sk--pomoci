@@ -4,8 +4,8 @@ import random
 import pygame # klíčová knihovna umožňující vytvářet jednoduše nejen hry
 pygame.init() # nutný příkaz hned na začátku pro správnou inicializaci knihovny
 
-text_font = pygame.font.Font("PixelifySans.ttf",100) # 100 je velikost písma
-score_font = pygame.font.Font("PixelifySans.ttf",50) # 100 je velikost písma
+text_font = pygame.font.Font("sprites/PixelifySans.ttf",100) # 100 je velikost písma
+score_font = pygame.font.Font("sprites/PixelifySans.ttf",50) # 100 je velikost písma
 
 framerate = 60
 score = 0
@@ -16,7 +16,7 @@ MOVEMENT_SPEED = 5
 class Player(pygame.sprite.Sprite):
     def __init__(self): # konstruktor - volá se vždy při vytvoření (inicializaci)
         super().__init__() # volá konstruktor třídy Sprite pro správnou inicializaci
-        self.image = pygame.image.load("dinosaur.png")
+        self.image = pygame.image.load("sprites/dinosaur.png")
         self.image = pygame.transform.scale(self.image, (50,50))
         self.rect = self.image.get_rect(midbottom = (100, 0.75*window_height))
         self.gravity = 0
@@ -47,7 +47,7 @@ class Obstacle(pygame.sprite.Sprite):
         super().__init__()
         self.size = random.randrange(25, 75)
 
-        self.image = pygame.image.load("kaktus.png")
+        self.image = pygame.image.load("sprites/kaktus.png")
         self.image = pygame.transform.scale(self.image, (self.size,self.size))
         self.rect = self.image.get_rect(midbottom = (window_width, 0.75*window_height))
         self.speed = 5
@@ -136,7 +136,7 @@ while True:
     else:  # hra neběží
         screen.blit(sky_surface,(0,0))
 
-        text_font = pygame.font.Font("PixelifySans.ttf",100) # 100 je velikost písma
+        text_font = pygame.font.Font("sprites/PixelifySans.ttf",100) # 100 je velikost písma
         text_surface = text_font.render("GAME OVER!", True, "Black") # text, anti-aliasing, černá barva písma
         screen.blit(text_surface, (0, 0))
         pygame.display.update()
