@@ -1,0 +1,6 @@
+Základní varianta:
+ - Pohyb hrace pomoci WAD
+ - Zbran na dalku
+ - Meneni zbrani
+ - Herni prostředí - kolize
+ - Zebriky
